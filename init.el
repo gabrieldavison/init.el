@@ -9,7 +9,7 @@
 
 ;; Custom setting dont persist and sit in heir own file
 (setq custom-file (make-temp-file "emacs-custom"))
-
+;; add to exec path
 (setq exec-path (append exec-path '("/Users/gabriel/bin")))
 
 ;; Preferences ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -19,9 +19,22 @@
 ;; no window decoration
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+;;shows line numbers
 (display-line-numbers-mode)
+(global-display-line-numbers-mode)
+;;shows matching parems
+(show-paren-mode 1)
+;; allows highlgiht to delete
+(delete-selection-mode 1)
+;;stop lockfiles
+(setq create-lockfiles nil)
 
 ;; Package installation ;;;;;;;;;;;;;;;;;;;;
+
+;;adds shell paths to eshell and co
+(use-package exec-path-from-shell
+   :config (exec-path-from-shell-initialize))
+
 ;; Installs evil-mode
 (use-package evil
 	     :config
@@ -41,4 +54,11 @@
   (load-theme 'plan9 t))
 (use-package smartparens
   :config
-  (require 'smartparens-config))
+  (require 'smartparens-config)
+(smartparens-global-mode t) 
+  )
+
+(use-package rainbow-delimiters 
+  :config
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
