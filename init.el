@@ -44,6 +44,7 @@
 	     :config
 	     (evil-mode 1)
 	     (evil-set-initial-state 'NeoTree 'emacs))
+
 ;; Installs helm and remaps some defaults
 (use-package helm
   :config
@@ -53,9 +54,11 @@
   (helm-mode 1))
 
 (use-package cider)
-(use-package plan9-theme
-  :config
-  (load-theme 'plan9 t))
+;; (use-package plan9-theme
+;;   :config
+;;   (load-theme 'plan9 t))
+(use-package lispy
+  :ensure t)
 (use-package smartparens
   :config
   (require 'smartparens-config)
