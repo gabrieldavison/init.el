@@ -1,5 +1,5 @@
 ;; Sets up package manager
-(setq package-enable-at-startup nil)
+;;(setq package-enable-at-startup nil)
 (setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
                          ("melpa" . "https://melpa.org/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
@@ -29,10 +29,14 @@
 ;;stop lockfiles
 (setq create-lockfiles nil)
 
+;;Org Mode
+;;(setq org-log-note-clock-out t)
+
 ;; Package installation ;;;;;;;;;;;;;;;;;;;;
 
 ;;adds shell paths to eshell and co
 (use-package exec-path-from-shell
+  :ensure t
    :config (exec-path-from-shell-initialize))
 
 ;; Installs evil-mode
@@ -59,6 +63,7 @@
   )
 
 (use-package rainbow-delimiters 
+  :ensure t
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
