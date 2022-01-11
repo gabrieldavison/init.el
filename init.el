@@ -31,6 +31,7 @@
 
 ;;Org Mode
 ;;(setq org-log-note-clock-out t)
+(setq org-startup-indented t)
 
 ;; Package installation ;;;;;;;;;;;;;;;;;;;;
 
