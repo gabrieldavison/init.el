@@ -28,6 +28,9 @@
 (delete-selection-mode 1)
 ;;stop lockfiles
 (setq create-lockfiles nil)
+;; Turn off noise
+(setq visible-bell 1)
+(setq ring-bell-function 'ignore)
 
 ;;Org Mode
 ;;(setq org-log-note-clock-out t)
@@ -54,12 +57,19 @@
   (global-set-key (kbd "C-x C-f") #'helm-find-files)  (global-set-key (kbd "M-x") 'helm-M-x)
   (helm-mode 1))
 
+;;Lispland
+(use-package racket-mode)
 (use-package cider)
-;; (use-package plan9-theme
-;;   :config
-;;   (load-theme 'plan9 t))
+(use-package slime
+  :config
+  (load (expand-file-name "~/.quicklisp/slime-helper.el"))
+  (setq inferior-lisp-program "sbcl")
+  )
 (use-package lispy
   :ensure t)
+(use-package lispyville
+  :config
+  (add-hook 'lispy-mode-hook #'lispyville-mode))
 (use-package smartparens
   :config
   (require 'smartparens-config)
